@@ -1,0 +1,127 @@
+<div class="skills-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Technical Expertise</h1>
+      <p class="page-subtitle">Skills, methodologies, and tools I use to build exceptional applications</p>
+    </div>
+  </div>
+
+  <!-- Technical Skills Section -->
+  <section class="skills-section">
+    <div class="section-header">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">Proficiency levels across various technologies and tools</p>
+    </div>
+
+    <div class="skills-grid">
+      @for (category of technicalSkills; track category.category) {
+        <div class="skills-category">
+          <div class="category-header">
+            <h3 class="category-title">{{ category.category }}</h3>
+          </div>
+          
+          <div class="skills-list">
+            @for (skill of category.skills; track skill.name) {
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">{{ skill.name }}</span>
+                  <span class="skill-level">{{ skill.level }}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" [style.width.%]="skill.level"></div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Languages Section -->
+  <section class="languages-section">
+    <div class="section-header">
+      <h2 class="section-title">Programming Languages</h2>
+    </div>
+    
+    <div class="languages-grid">
+      @for (lang of languages; track lang.name) {
+        <div class="language-item">
+          <div class="language-header">
+            <span class="language-name">{{ lang.name }}</span>
+            <span class="language-percent">{{ lang.level }}%</span>
+          </div>
+          <div class="language-bar">
+            <div class="language-progress" [style.width.%]="lang.level"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Methodologies Section -->
+  <section class="methodologies-section">
+    <div class="section-header">
+      <h2 class="section-title">Development Methodologies</h2>
+      <p class="section-subtitle">Approaches and principles I follow in development</p>
+    </div>
+    
+    <div class="methodologies-grid">
+      @for (method of methodologies; track method.title) {
+        <div class="methodology-card">
+          <div class="methodology-header">
+            <h3 class="methodology-title">{{ method.title }}</h3>
+          </div>
+          
+          <p class="methodology-description">{{ method.description }}</p>
+          
+          <div class="principles-list">
+            <h4 class="principles-title">Key Principles</h4>
+            <ul class="principles">
+              @for (principle of method.principles; track principle) {
+                <li>{{ principle }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section class="tools-section">
+    <div class="section-header">
+      <h2 class="section-title">Tools & Technologies</h2>
+    </div>
+    
+    <div class="tools-grid">
+      <div class="tool-category">
+        <h3 class="tool-category-title">Development</h3>
+        <div class="tool-items">
+          @for (tool of tools.development; track tool) {
+            <span class="tool-item">{{ tool }}</span>
+          }
+        </div>
+      </div>
+      
+      <div class="tool-category">
+        <h3 class="tool-category-title">Design</h3>
+        <div class="tool-items">
+          @for (tool of tools.design; track tool) {
+            <span class="tool-item">{{ tool }}</span>
+          }
+        </div>
+      </div>
+      
+      <div class="tool-category">
+        <h3 class="tool-category-title">Testing</h3>
+        <div class="tool-items">
+          @for (tool of tools.testing; track tool) {
+            <span class="tool-item">{{ tool }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

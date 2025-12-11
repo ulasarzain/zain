@@ -1,0 +1,142 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-intro">
+        <div class="intro-badge">
+          <span class="badge-line"></span>
+          <span class="badge-text">Welcome</span>
+        </div>
+<div class="profile-pic-section">
+  <div class="profile-pic-container">
+    <div class="profile-pic-wrapper">
+      <img 
+        src="WhatsApp Image 2025-12-10 at 4.41.37 PM.jpeg" 
+        alt="" 
+        class="profile-pic"
+      >
+      <div class="profile-pic-overlay">
+        <div class="profile-pic-info">
+        </div>
+        <div class="profile-pic-status">
+          <span class="status-dot"></span>
+        </div>
+      </div>
+      
+     
+      <!-- Animated rings -->
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+    </div>
+  </div>
+</div>
+        
+        <h1 class="hero-title">{{ name }}</h1>
+        
+        <div class="hero-subtitle">
+          <span class="subtitle-main">{{ title }}</span>
+          <span class="subtitle-separator">•</span>
+          <span class="subtitle-specialization">{{ specialization }}</span>
+        </div>
+        
+        <p class="hero-description">
+          {{ aboutMe }}
+
+
+
+
+
+        </p>
+        
+        <div class="hero-actions">
+          <a routerLink="/projects" class="btn btn-primary">
+            <span>View Projects</span>
+          </a>
+          <a routerLink="/contact" class="btn btn-secondary">
+            <span>Contact Me</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="card-header">
+            <div class="card-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="code-snippet">
+              <pre><code>// Computer Science Student
+const zain = {{ '{' }}
+  focus: "FRONT-END DEVELOPMENT",
+  technologies: ["Angular", "TypeScript"],
+  philosophy: "Security first"
+{{ '}' }};
+
+// Building secure solutions
+await zain.buildApplications();</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-card">
+          <div class="stat-number">{{ stat.number }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      }
+    </div>
+  </section>
+  
+  <!-- Skills Preview -->
+  <section class="skills-preview">
+    <div class="section-header">
+      <h2 class="section-title">Technical Expertise</h2>
+      <p class="section-subtitle">Core competencies and technologies</p>
+    </div>
+    
+    <div class="skills-grid">
+      @for (skill of featuredSkills; track skill.name) {
+        <div class="skill-card">
+          <div class="skill-header">
+            <h3 class="skill-name">{{ skill.name }}</h3>
+            <span class="skill-percent">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" [style.width.%]="skill.level"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+  
+  <!-- Quick Links -->
+  <section class="quick-links">
+    <div class="links-grid">
+      @for (link of quickLinks; track link.route) {
+        <div class="link-card" [routerLink]="link.route">
+          <h3 class="link-title">{{ link.label }}</h3>
+          <p class="link-description">{{ link.description }}</p>
+          <span class="link-arrow">→</span>
+        </div>
+      }
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+

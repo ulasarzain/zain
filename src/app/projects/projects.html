@@ -1,0 +1,194 @@
+<div class="projects-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-subtitle">My journey from beginner projects to more complex web applications</p>
+    </div>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="category-filter">
+    <div class="filter-content">
+      <div class="filter-buttons">
+        @for (category of categories; track category) {
+          <button 
+            [class.active]="selectedCategory === category"
+            (click)="filterProjects(category)"
+            class="filter-btn">
+            {{ category }}
+          </button>
+        }
+      </div>
+      <div class="filter-count">
+        Showing {{ filteredProjects.length }} of {{ projects.length }} projects
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid">
+    @for (project of filteredProjects; track project.id) {
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-meta">
+            <span class="project-category">{{ project.category }}</span>
+            <span class="project-year">{{ project.year }}</span>
+          </div>
+          <div class="project-status" [style.background-color]="getStatusColor(project.status)">
+            {{ project.status }}
+          </div>
+        </div>
+
+        <h2 class="project-title">{{ project.title }}</h2>
+        <p class="project-description">{{ project.description }}</p>
+
+        <div class="project-features">
+          <h3 class="features-title">Key Features</h3>
+          <ul class="features-list">
+            @for (feature of project.features; track feature) {
+              <li>{{ feature }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="project-technologies">
+          @for (tech of project.technologies; track tech) {
+            <span class="tech-tag">{{ tech }}</span>
+          }
+        </div>
+
+        <div class="project-actions">
+          @if (project.github) {
+            <a [href]="project.github" target="_blank" class="action-btn github-btn">
+              View Code
+            </a>
+          }
+          @if (project.demo) {
+            <a [href]="project.demo" target="_blank" class="action-btn demo-btn">
+              Live Demo
+            </a>
+          }
+          @if (!project.demo && !project.github) {
+            <button class="action-btn disabled-btn" disabled>
+              Private Project
+            </button>
+          }
+         
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Empty State -->
+  @if (filteredProjects.length === 0) {
+    <div class="empty-state">
+      <div class="empty-content">
+        <h3>No projects found</h3>
+        <p>No projects match the selected category. Try selecting a different filter.</p>
+        <button (click)="filterProjects('All')" class="reset-btn">
+          Show All Projects
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Project Details Modal/Overlay -->
+  @if (showModal && selectedProject) {
+    <div class="modal-overlay" (click)="closeProjectDetails()">
+      <div class="modal-container" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2 class="modal-title">{{ selectedProject.title }}</h2>
+          <button class="modal-close-btn" (click)="closeProjectDetails()">×</button>
+        </div>
+        
+        <div class="modal-content">
+          <div class="project-details-grid">
+            <!-- Left Column -->
+            <div class="details-left">
+              <div class="details-section">
+                <h3>Project Description</h3>
+                <p>{{ selectedProject.description }}</p>
+                @if (selectedProject.details) {
+                  <p class="additional-details">{{ selectedProject.details }}</p>
+                }
+              </div>
+              
+              <div class="details-section">
+                <h3>Client Information</h3>
+                <div class="client-info">
+                  <div class="info-item">
+                    <span class="info-label">Client:</span>
+                    <span class="info-value">{{ selectedProject.client }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Duration:</span>
+                    <span class="info-value">{{ selectedProject.duration }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Year:</span>
+                    <span class="info-value">{{ selectedProject.year }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Status:</span>
+                    <span class="info-value status-badge" [style.background-color]="getStatusColor(selectedProject.status)">
+                      {{ selectedProject.status }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="details-right">
+              <div class="details-section">
+                <h3>Technologies Used</h3>
+                <div class="tech-stack">
+                  @for (tech of selectedProject.technologies; track tech) {
+                    <span class="tech-item">{{ tech }}</span>
+                  }
+                </div>
+              </div>
+              
+              <div class="details-section">
+                <h3>Key Features</h3>
+                <ul class="features-list-modal">
+                  @for (feature of selectedProject.features; track feature) {
+                    <li>{{ feature }}</li>
+                  }
+                </ul>
+              </div>
+              
+              <div class="details-section">
+                <h3>Project Links</h3>
+                <div class="project-links">
+                  @if (selectedProject.github) {
+                    <a [href]="selectedProject.github" target="_blank" class="link-btn github-link">
+                      <span>View GitHub Repository</span>
+                    </a>
+                  }
+                  @if (selectedProject.demo) {
+                    <a [href]="selectedProject.demo" target="_blank" class="link-btn demo-link">
+                      <span>View Live Demo</span>
+                    </a>
+                  }
+                  @if (!selectedProject.github && !selectedProject.demo) {
+                    <div class="no-links">
+                      <span>This is a private client project</span>
+                    </div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button class="modal-action-btn" (click)="closeProjectDetails()">
+            Close Details
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

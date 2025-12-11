@@ -1,0 +1,143 @@
+<div class="experience-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Experience & Education</h1>
+      <p class="page-subtitle">My professional journey and academic background</p>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="content-grid">
+    <!-- Left Column - Experience -->
+    <div class="experience-column">
+      <div class="section-header">
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">Roles and responsibilities throughout my career</p>
+      </div>
+
+      <!-- Experience Timeline -->
+      <div class="timeline">
+        <div *ngFor="let exp of experiences" class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-circle"></div>
+            <div class="marker-line"></div>
+          </div>
+          
+          <div class="timeline-content">
+            <div class="experience-header">
+              <div class="position-info">
+                <h3 class="position-title">{{ exp.position }}</h3>
+                <div class="company-info">
+                  <span class="company-name">{{ exp.company }}</span>
+                  <span class="company-separator">•</span>
+                  <span class="company-location">{{ exp.location }}</span>
+                </div>
+              </div>
+              <div class="period-info">
+                <span class="period">{{ exp.period }}</span>
+                <span class="employment-type">{{ exp.type }}</span>
+              </div>
+            </div>
+            
+            <p class="experience-description">{{ exp.description }}</p>
+            
+            <div class="responsibilities">
+              <h4 class="responsibilities-title">Key Responsibilities</h4>
+              <ul class="responsibilities-list">
+                <li *ngFor="let resp of exp.responsibilities">{{ resp }}</li>
+              </ul>
+            </div>
+            
+            <div class="technologies-used">
+              <div class="technologies-title">Technologies Used</div>
+              <div class="tech-tags">
+                <span *ngFor="let tech of exp.technologies" class="tech-tag">{{ tech }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column - Education & Certifications -->
+    <div class="sidebar-column">
+      <!-- Education Card -->
+      <div class="sidebar-card">
+        <div class="card-header">
+          <h2 class="card-title">Education</h2>
+        </div>
+        
+        <div class="card-content">
+          <div class="education-item">
+            <h3 class="degree">{{ education.degree }}</h3>
+            <div class="institution-info">
+              <span class="institution-name">{{ education.institution }}</span>
+              <span class="institution-location">{{ education.location }}</span>
+            </div>
+            
+            <div class="education-meta">
+              <div class="meta-item">
+                <span class="meta-label">Period</span>
+                <span class="meta-value">{{ education.period }}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">GPA</span>
+                <span class="meta-value">{{ education.gpa }}</span>
+              </div>
+            </div>
+            
+            <div class="coursework-section">
+              <h4 class="section-subtitle">Relevant Coursework</h4>
+              <div class="coursework-tags">
+                <span *ngFor="let course of education.coursework" class="course-tag">{{ course }}</span>
+              </div>
+            </div>
+            
+            <div class="achievements-section">
+              <h4 class="section-subtitle">Achievements</h4>
+              <ul class="achievements-list">
+                <li *ngFor="let achievement of education.achievements">{{ achievement }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications Card -->
+      <div class="sidebar-card">
+        <div class="card-header">
+          <h2 class="card-title">Certifications</h2>
+        </div>
+        
+        <div class="card-content">
+          <div class="certifications-list">
+            <div *ngFor="let cert of certifications" class="certification-item">
+              <div class="cert-header">
+                <h3 class="cert-name">{{ cert.name }}</h3>
+                <span class="cert-date">{{ cert.date }}</span>
+              </div>
+              <div class="cert-details">
+                <span class="cert-issuer">{{ cert.issuer }}</span>
+                <span class="cert-separator">|</span>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download Resume -->
+      <div class="resume-card">
+        <div class="resume-content">
+          <h3 class="resume-title">Download Resume</h3>
+          <p class="resume-description">Get a detailed overview of my experience and skills</p>
+          <button class="download-btn">
+            <span class="btn-text">Download PDF</span>
+            <span class="btn-icon">↓</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
