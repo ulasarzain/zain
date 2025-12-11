@@ -34,33 +34,33 @@
 }
 
 /* Profile Picture */
-/* .profile-pic {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-   object-position: center top; 
-}
 
-.profile-pic-wrapper:hover .profile-pic {
-  transform: scale(1.1);
-} */
 
-.profile-pic-container {
-  width: 150px;  /* adjust size */
-  height: 150px; /* adjust size */
+/* .profile-pic-container {
+  width: 150px; 
+  height: 150px; 
   border-radius: 50%;
   overflow: hidden;
 }
 
 .profile-pic {
   width: 100%;
-  height: auto;  /* maintain aspect ratio */
+  height: auto; 
   display: block;
-  transform: translateY(-10%); /* move face up or down */
+  transform: translateY(-10%); 
+} */
+
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%; /* slightly lower than center */
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 /* Overlay */
 .profile-pic-overlay {
